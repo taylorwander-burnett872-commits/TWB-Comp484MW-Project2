@@ -1,0 +1,136 @@
+
+* {
+    box-sizing: border-box;
+  }
+
+  html{
+    background: black;
+  }
+  
+  body {
+    font-family: helvetica, arial, sans-serif;
+    margin-top: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background: linear-gradient(rgba(70,130,180, 0.5),
+              rgba(70,130,180, 0.5)),url('images/space.jpg') no-repeat; 
+    border-radius: 5em;
+  }
+  
+  main {
+    display:block;
+    min-height:175px;
+    overflow: hidden;
+  }
+  
+  header {
+    border-bottom: 2px solid white;
+    padding-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  h1 {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  p {
+    max-width: 600px;
+  }
+  
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
+  footer {
+    padding-top: 25px;
+    border-top: 1px solid black;
+  }
+  
+  footer a {
+    float:left;
+    margin:5px;
+  }
+  
+  .pet-image {
+    height: 250px;
+    display: inline-block;
+    margin: 0;
+    border-radius: 50em;
+    border: #1e2835 solid 5px;
+    background-color: rebeccapurple
+  }
+  
+  .dashboard div {
+    display:block;
+    text-align: center;
+    color :white;
+    margin: 10px;
+  }
+  
+  
+  .pet-image-container {
+    float:left;
+    padding:10px;
+    width: 59%;
+    text-align: right;
+  }
+
+  .image-speech-container{
+    display :flex;
+    align-items: center;
+    gap: 20px;
+
+  }
+  
+  .dashboard {
+    float:left;
+    padding:20px;
+    width: 100%;
+  }
+  
+  .button-container {
+    margin-top:20px;
+    text-align: center;
+  }
+  
+  .button-container button {
+    width: 120px;
+      margin-right: 10px;
+      text-align: center;
+      display: inline-block;
+    font-size:15px;
+    background-color: #1e2835;
+    border-color: #404853;
+    cursor:pointer;
+    background-image: linear-gradient(to bottom,rgba(246,246,246,.1)0%,rgba(30,40,53,0)66%);
+    color: #fafafa;
+    padding: 10px;
+  }
+
+  .speech-bubble {
+	position: relative;
+	background: #c0c0c0;
+	border-radius: .4em;
+  padding: 30px;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 12px solid transparent;
+	border-right-color: #c0c0c0;
+	border-left: 0;
+	margin-top: -12px;
+	margin-left: -12px;
+}
