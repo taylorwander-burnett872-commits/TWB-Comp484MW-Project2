@@ -15,6 +15,7 @@
     background: linear-gradient(rgba(70,130,180, 0.5),
               rgba(70,130,180, 0.5)),url('images/space.jpg') no-repeat; 
     border-radius: 5em;
+    background-size: cover;
   }
   
   main {

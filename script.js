@@ -1,5 +1,15 @@
 $(function() { // Makes sure that your function is called once all the DOM elements of the page are ready to be used.
     
+    
+    //jquery methods used: .fadeToggle() & .height().
+
+    //.fadeToggle() toggles between a fade in and a fade out. 
+    // It is used here to fade out the current text in the speech bubble and fade in the new text when a button is clicked. 
+    
+    //.height() sets the height of an image. 
+    // It is used here to set the height of the pet image to 200 pixels. 
+    // It is useful in the case that different pet images are used that may be different sizes, so that the image will always be appropiately sized.
+  
     // Called function to update the name, happiness, and weight of our pet in our HTML
     checkAndUpdatePetInfoInHtml();
   
@@ -18,8 +28,21 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
   
     var lastButton = null;
     var consecutiveCount = 0;
+
+    var petSfx = {click: new Audio('audio/click.mp3'), munchies: new Audio('audio/munch.mp3'), party: new Audio('audio/party.mp3'), dance: new Audio('audio/dance.mp3'), call: new Audio('audio/call.mp3'), show: new Audio('audio/show.mp3'), fail: new Audio('audio/fail.mp3')};
    
+    function stopSFX(SFX) {
+      SFX.pause();
+      SFX.currentTime = 0;
+    }
+
     function clickedTreatButton() {
+      stopSFX(petSfx.dance);
+      stopSFX(petSfx.call);
+      stopSFX(petSfx.party);
+      stopSFX(petSfx.show);
+      stopSFX(petSfx.fail);
+      petSfx.click.play();
       var currentButton = 'treat';
       if (lastButton === currentButton) {
         consecutiveCount++;
@@ -39,6 +62,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
         pet_info.weight += 10;
         pet_info.money -= 5;
         newText = "That's some good stuff, man!";
+        petSfx.munchies.play();
       }
       if ($('.speech-bubble').text() !== newText) {
         $('.speech-bubble').fadeToggle("slow", "linear", function() {
@@ -51,6 +75,12 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     }
     
     function clickedPartyButton() {
+      stopSFX(petSfx.dance);
+      stopSFX(petSfx.call);
+      stopSFX(petSfx.munchies);
+      stopSFX(petSfx.show);
+      stopSFX(petSfx.fail);
+      petSfx.click.play();
       var currentButton = 'party';
       if (lastButton === currentButton) {
         consecutiveCount++;
@@ -65,6 +95,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
         pet_info.happiness += 5;
         pet_info.weight -= 2;
         newText = "Partying with the party freak! Oh yeah!";
+        petSfx.party.play();
       }
       if ($('.speech-bubble').text() !== newText) {
         $('.speech-bubble').fadeToggle("slow", "linear", function() {
@@ -77,6 +108,12 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     }
     
     function clickedDanceButton() {
+      stopSFX(petSfx.show);
+      stopSFX(petSfx.call);
+      stopSFX(petSfx.party);
+      stopSFX(petSfx.munchies);
+      stopSFX(petSfx.fail);
+      petSfx.click.play();
       var currentButton = 'dance';
       if (lastButton === currentButton) {
         consecutiveCount++;
@@ -91,6 +128,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
         pet_info.happiness -= 10;
         pet_info.weight -= 6;
         newText = "I'm the dancin' new sensation!";
+        petSfx.dance.play();
       }
       if ($('.speech-bubble').text() !== newText) {
         $('.speech-bubble').fadeToggle("slow", "linear", function() {
@@ -103,6 +141,13 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     }
 
     function clickedCallButton() {
+      stopSFX(petSfx.dance);
+      stopSFX(petSfx.dance);
+      stopSFX(petSfx.party);
+      stopSFX(petSfx.munchies);
+      stopSFX(petSfx.show);
+      stopSFX(petSfx.fail);
+      petSfx.click.play();
       var currentButton = 'call';
       if (lastButton === currentButton) {
         consecutiveCount++;
@@ -118,6 +163,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
         pet_info.weight += 2;
         pet_info.money -= 2;
         newText = "Here's the party freak on the phone! Aw yeah!";
+        petSfx.call.play();
       }
       if ($('.speech-bubble').text() !== newText) {
         $('.speech-bubble').fadeToggle("slow", "linear", function() {
@@ -131,6 +177,12 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     }
 
     function clickedShowButton() {
+      stopSFX(petSfx.dance);
+      stopSFX(petSfx.call);
+      stopSFX(petSfx.party);
+      stopSFX(petSfx.munchies);
+      stopSFX(petSfx.fail);
+      petSfx.click.play();
       var currentButton = 'show';
       if (lastButton === currentButton) {
         consecutiveCount++;
@@ -149,19 +201,23 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
         pet_info.happiness -= 10;
         pet_info.money += 8;
         newText = "1st prize! I'm the coolest freak around!";
+        petSfx.show.play();
       }
       else if (pet_info.happiness > 150 && pet_info.weight < 150) {
         pet_info.happiness -= 15;
         pet_info.money += 4;
         newText = "2nd prize! Sweet!";
+        petSfx.show.play();
       }
       else if (pet_info.happiness > 100 && pet_info.weight < 200) {
         pet_info.happiness -= 20;
         pet_info.money += 2;
         newText = "3rd prize! Not bad!";
+        petSfx.show.play();
       } else {
         pet_info.happiness -= 25;
         newText = "No prize. Lame.";
+        petSfx.fail.play();
       }
       if ($('.speech-bubble').text() !== newText) {
         $('.speech-bubble').fadeToggle("slow", "linear", function() {
