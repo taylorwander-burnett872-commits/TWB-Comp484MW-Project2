@@ -21,6 +21,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     $('.show-button').click(clickedShowButton);
 
     $('.pet-image').height(200);
+    $('.pet-image').width(200);
   })
   
     // Add a variable "pet_info" equal to a object with the name (string), weight (number), and happiness (number) of your pet
@@ -36,7 +37,12 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       SFX.currentTime = 0;
     }
 
+    function changePetImage(newImageSrc) {
+      $('.pet-image').attr('src', newImageSrc);
+    }
+
     function clickedTreatButton() {
+      changePetImage('images/munch.gif');
       stopSFX(petSfx.dance);
       stopSFX(petSfx.call);
       stopSFX(petSfx.party);
@@ -75,6 +81,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     }
     
     function clickedPartyButton() {
+      changePetImage('images/Freddy.png');
       stopSFX(petSfx.dance);
       stopSFX(petSfx.call);
       stopSFX(petSfx.munchies);
@@ -108,6 +115,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     }
     
     function clickedDanceButton() {
+      changePetImage('images/dancing.gif');
       stopSFX(petSfx.show);
       stopSFX(petSfx.call);
       stopSFX(petSfx.party);
@@ -141,6 +149,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     }
 
     function clickedCallButton() {
+      changePetImage('images/Freddy.png');
       stopSFX(petSfx.dance);
       stopSFX(petSfx.dance);
       stopSFX(petSfx.party);
@@ -159,6 +168,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       if (pet_info.money < 2) {
         newText = "Sorry bro, it's $2 a call!";
       } else {
+        changePetImage('images/call.gif');
         pet_info.happiness += 15;
         pet_info.weight += 2;
         pet_info.money -= 2;
@@ -177,6 +187,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     }
 
     function clickedShowButton() {
+      changePetImage('images/Freddy.png');
       stopSFX(petSfx.dance);
       stopSFX(petSfx.call);
       stopSFX(petSfx.party);
@@ -215,6 +226,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
         newText = "3rd prize! Not bad!";
         petSfx.show.play();
       } else {
+        changePetImage('images/loss.png');
         pet_info.happiness -= 25;
         newText = "No prize. Lame.";
         petSfx.fail.play();
@@ -233,7 +245,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     function checkAndUpdatePetInfoInHtml() {
       checkWeightAndHappinessBeforeUpdating();  
       updatePetInfoInHtml();
-    }
+     }
     //Checks if weight or happiness have reached below or above their max or min values and makes sure they cannot go beyond or below them.
     function checkWeightAndHappinessBeforeUpdating() {
       if (pet_info.weight < 10) {
